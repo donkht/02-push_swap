@@ -19,6 +19,10 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
+		if ((sign == 1 && ret == 214748364 && str[i] > '7') || ret > 214748364)
+			return (-1);
+		else if (ret == 214748364 && sign == -1 && str[i] == '9')
+			return (-1);
 		ret = ret * 10 + str[i] - 48;
 		i++;
 	}
