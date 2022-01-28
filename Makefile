@@ -1,18 +1,23 @@
-NAME = push_swap
-SRC = push_swap.c
-OBJ = $(SRC:.c=.o)
+NAME		=			push_swap
+SRC			=			push_swap.c \
+						operations1.c \
+						operations2.c \
+						operations3.c \
+						sort1.c
 
-NAME_BONUS = checker
-SRC_BONUS = checker.c
-OBJ_BONUS = $(SRC_BONUS:.c=.o)
+OBJ			=			$(SRC:.c=.o)
 
-HEADER = ./includes/push_swap.h
-HEADER_BONUS = ./includes/checker.h
+NAME_BONUS	=			checker
+SRC_BONUS	=			checker.c
+OBJ_BONUS	=			$(SRC_BONUS:.c=.o)
 
-CC = gcc -Wall -Wextra -Werror
+HEADER		=			./includes/push_swap.h
+HEADER_BONUS =			./includes/checker.h
 
-LIBFT = ./includes/libft/libft.a
-GNL = ./includes/gnl/gnl.a
+CC			=			gcc -Wall -Wextra -Werror
+
+LIBFT		=			./includes/libft/libft.a
+GNL			=			./includes/gnl/gnl.a
 
 all: ${NAME}
 

@@ -6,7 +6,7 @@
 /*   By: nleyton <nleyton@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 05:06:04 by nleyton           #+#    #+#             */
-/*   Updated: 2022/01/23 06:10:57 by nleyton          ###   ########.fr       */
+/*   Updated: 2022/01/27 08:17:05 by nleyton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	printa(t_stacks *ab) //delete it
 	t_node *tmp;
 	
 	tmp = ab->a_head;
-	write(1, "-\n", 2);
+	write(1, "| Stack A |\n", 12);
 	while(tmp)
 	{
 		write(1, ft_itoa(tmp->value), ft_strlen(ft_itoa(tmp->value)));
@@ -26,9 +26,24 @@ void	printa(t_stacks *ab) //delete it
 		write(1, "\n", 1);
 		tmp = tmp->next;
 	}
-	write(1, "-\n", 2); 
+	write(1, "----------\n\n", 12);
 }
-
+void	printb(t_stacks *ab) //delete it
+{
+	t_node *tmp;
+	
+	tmp = ab->b_head;
+	write(1, "| Stack B |\n", 12);
+	while(tmp)
+	{
+		write(1, ft_itoa(tmp->value), ft_strlen(ft_itoa(tmp->value)));
+		write(1, "\t", 1);
+		write(1, ft_itoa(tmp->index), ft_strlen(ft_itoa(tmp->index)));
+		write(1, "\n", 1);
+		tmp = tmp->next;
+	}
+	write(1, "----------\n\n", 12);
+}
 void	new_node(t_stacks *ab, int n)
 {
 	t_node *tmp;
@@ -38,7 +53,7 @@ void	new_node(t_stacks *ab, int n)
 		exit (EXIT_FAILURE);
 	tmp->value = n;
 	tmp->index = -1;
-	
+	tmp->flag = 0;
 	if (ab->a_head == NULL)
 	{
 		ab->a_head = tmp;
@@ -133,6 +148,10 @@ void	init_and_parse(t_stacks *ab, int argc, char **argv)
 	ab->a_tail = NULL;
 	ab->b_head = NULL;
 	ab->b_tail = NULL;
+	ab->flag = 0;
+	ab->mid = 0;
+	ab->next = 0;
+	ab->max = -1;
 	if (argc == 1)
 		exit(EXIT_FAILURE);
 	else if (argc == 2)
@@ -176,7 +195,7 @@ int		is_the_list_already_sorted(t_stacks *ab)
 			return (0);
 		tmp = tmp->next;
 	}
-	exit(EXIT_SUCCESS);
+	return(1);
 }
 
 void	indexation(t_stacks *ab)
@@ -217,9 +236,23 @@ int main (int argc, char **argv)
 	duplicate_checking(&ab);
 	is_the_list_already_sorted(&ab);
 	indexation(&ab);
-	//operations for push_swap
-	// sort 
-	// print 
+
+	// write(1, "after operations:\n", 18);
+	// pb(&ab);
+	// pb(&ab);
+	// pb(&ab);
+	// printa(&ab); 
+	// printb(&ab); 
+	// write(1, "after operations:\n", 18);
+	// rra(&ab);
+	// rrb(&ab);
+	// rb(&ab);
+	// printa(&ab); 
+	// printb(&ab); 
+	
+	sort(&ab); 
+
+	printa(&ab);
 	// clear 
 	exit(EXIT_SUCCESS);
 }
