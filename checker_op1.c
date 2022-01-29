@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations1.c                                      :+:      :+:    :+:   */
+/*   checker_op1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nleyton <nleyton@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 06:15:39 by nleyton           #+#    #+#             */
-/*   Updated: 2022/01/29 19:49:00 by nleyton          ###   ########.fr       */
+/*   Updated: 2022/01/29 10:00:41 by nleyton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/push_swap.h"
+#include "./includes/checker.h"
 
 void    sa(t_stacks *ab)
 {
@@ -24,7 +24,6 @@ void    sa(t_stacks *ab)
 		tmp->prev = NULL;
 		tmp->next = ab->a_head;
 		ab->a_head = tmp;
-		write(1, "sa\n", 3);
 	}
 }
 
@@ -40,7 +39,6 @@ void    sb(t_stacks *ab)
 		tmp->prev = NULL;
 		tmp->next = ab->b_head;
 		ab->b_head = tmp;
-		write(1, "sb\n", 3);
 	}
 }
 
@@ -66,7 +64,6 @@ void    ss(t_stacks *ab)
 		tmp->next = ab->b_head;
 		ab->b_head = tmp;
 	}
-	write(1, "ss\n", 3);
 }
 
 void  pa(t_stacks *ab)
@@ -89,8 +86,6 @@ void  pa(t_stacks *ab)
     	ab->b_head = tmp2;
     	ab->b_size--;
     	ab->a_size++;
-		write(1, "pa\n", 3);
-
 	}
 }
 
@@ -114,6 +109,5 @@ void  pb(t_stacks *ab)
     	ab->a_head = tmp2;
     	ab->a_size--;
     	ab->b_size++;
-		write(1, "pb\n", 3);
 	}
 }
