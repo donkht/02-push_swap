@@ -6,7 +6,7 @@
 /*   By: nleyton <nleyton@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 05:07:35 by nleyton           #+#    #+#             */
-/*   Updated: 2022/01/27 08:19:57 by nleyton          ###   ########.fr       */
+/*   Updated: 2022/01/29 03:00:41 by nleyton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 typedef struct s_node{
     int             value;
     int             index;
-    int             flag;
+    // int             flag;
     struct s_node   *next;
     struct s_node   *prev;
     
@@ -34,10 +34,10 @@ typedef struct s_stacks{
     int            b_size;
     t_node         *b_head;
     t_node         *b_tail;
-    int            flag;
-    int            mid;
-    int            next;
-    int            max;
+    // int            flag;
+    // int            mid;
+    // int            next;
+    // int            max;
 } t_stacks;
 
 // general
@@ -66,7 +66,10 @@ void	rrr(t_stacks *ab);
 void    sort(t_stacks *ab);
 void    sort3(t_stacks *ab);
 void    sort4n5(t_stacks *ab);
-void    sort100500(t_stacks *ab);
+// void    sor t100500(t_stacks *ab);
+int		position(t_stacks *ab);
+void	do_sort_100(t_stacks *ab);
+
 
 
 #endif

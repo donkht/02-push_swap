@@ -6,19 +6,19 @@
 /*   By: nleyton <nleyton@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 05:06:04 by nleyton           #+#    #+#             */
-/*   Updated: 2022/01/27 08:17:05 by nleyton          ###   ########.fr       */
+/*   Updated: 2022/01/29 06:01:55 by nleyton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-void	printa(t_stacks *ab) //delete it
+void	printa(t_stacks *ab)
 {
-	t_node *tmp;
-	
+	t_node	*tmp;
+
 	tmp = ab->a_head;
 	write(1, "| Stack A |\n", 12);
-	while(tmp)
+	while (tmp)
 	{
 		write(1, ft_itoa(tmp->value), ft_strlen(ft_itoa(tmp->value)));
 		write(1, "\t", 1);
@@ -28,7 +28,8 @@ void	printa(t_stacks *ab) //delete it
 	}
 	write(1, "----------\n\n", 12);
 }
-void	printb(t_stacks *ab) //delete it
+
+void	printb(t_stacks *ab)
 {
 	t_node *tmp;
 	
@@ -53,7 +54,7 @@ void	new_node(t_stacks *ab, int n)
 		exit (EXIT_FAILURE);
 	tmp->value = n;
 	tmp->index = -1;
-	tmp->flag = 0;
+	// tmp->flag = 0;
 	if (ab->a_head == NULL)
 	{
 		ab->a_head = tmp;
@@ -115,8 +116,8 @@ void	parse1(t_stacks *ab, char *str)
 		}
 		new_node(ab, ft_atoi(arr[i]));
 	}
-	write(1, "parse1\n", 7);
-	printa(ab);
+	// write(1, "parse1\n", 7);
+	// printa(ab);
 }
 
 void	parse2(t_stacks *ab, int argc, char **argv)
@@ -134,8 +135,8 @@ void	parse2(t_stacks *ab, int argc, char **argv)
 		}	
 		new_node(ab, ft_atoi(argv[i++]));
 	}
-	write(1, "parse2\n", 7);
-	printa(ab);   //delete
+	// write(1, "parse2 finished\n", 16);
+	// printa(ab);   //delete
 	
 
 }
@@ -148,10 +149,10 @@ void	init_and_parse(t_stacks *ab, int argc, char **argv)
 	ab->a_tail = NULL;
 	ab->b_head = NULL;
 	ab->b_tail = NULL;
-	ab->flag = 0;
-	ab->mid = 0;
-	ab->next = 0;
-	ab->max = -1;
+	// ab->flag = 0;
+	// ab->mid = 0;
+	// ab->next = 0;
+	// ab->max = -1;
 	if (argc == 1)
 		exit(EXIT_FAILURE);
 	else if (argc == 2)
@@ -195,7 +196,7 @@ int		is_the_list_already_sorted(t_stacks *ab)
 			return (0);
 		tmp = tmp->next;
 	}
-	return(1);
+	exit(EXIT_FAILURE);
 }
 
 void	indexation(t_stacks *ab)
@@ -220,7 +221,7 @@ void	indexation(t_stacks *ab)
 		min->index = current_index;
 		current_index++;
 	}
-	printa(ab);   //delete
+	// printa(ab);   //delete
 }
 
 
@@ -252,7 +253,7 @@ int main (int argc, char **argv)
 	
 	sort(&ab); 
 
-	printa(&ab);
+	// printa(&ab);
 	// clear 
 	exit(EXIT_SUCCESS);
 }

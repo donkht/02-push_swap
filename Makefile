@@ -14,7 +14,7 @@ OBJ_BONUS	=			$(SRC_BONUS:.c=.o)
 HEADER		=			./includes/push_swap.h
 HEADER_BONUS =			./includes/checker.h
 
-CC			=			gcc -Wall -Wextra -Werror
+CC			=			gcc -Wall -Wextra -Werror -g
 
 LIBFT		=			./includes/libft/libft.a
 GNL			=			./includes/gnl/gnl.a
