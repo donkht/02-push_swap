@@ -10,7 +10,7 @@ FILES		=	ft_memccpy.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
 
 OBJS		=	$(patsubst %.c, %.o, $(FILES))
 
-CFLAGS			=	-Wall -Wextra -Werror -c -I
+CFLAGS			=	-Wall -Wextra -Werror -c
 
 all: $(NAME)
 
@@ -18,7 +18,7 @@ $(NAME): $(OBJS) libft.h
 	ar rcs $(NAME) $?
 
 %.o : %.c
-	gcc $(CFLAGS) libft.h $< -o $@
+	gcc $(CFLAGS) $< -o $@
 
 clean:
 	rm -f $(OBJS)

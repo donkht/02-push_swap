@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nleyton <nleyton@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/29 22:26:29 by nleyton           #+#    #+#             */
+/*   Updated: 2022/01/30 04:33:20 by nleyton          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	count_words(char const *s, char c)
@@ -5,7 +17,7 @@ static int	count_words(char const *s, char c)
 	int	count;
 
 	count = 0;
-	while (*s != 0 )
+	while (*s != 0)
 	{
 		if (*s != c && (*(s + 1) == c || *(s + 1) == 0))
 			count++;
@@ -39,7 +51,7 @@ static char	*new_word_alloc(char const *s, char c)
 	return (ret);
 }
 
-static void	free_Navalny(char **ret, int i)
+static void	free_navalny(char **ret, int i)
 {
 	while (--i > 0)
 	{
@@ -69,7 +81,7 @@ char	**ft_split(char const *s, char c)
 			s++;
 		ret[i] = new_word_alloc(s, c);
 		if (!ret[i])
-			free_Navalny(ret, i);
+			free_navalny(ret, i);
 		while (*s != c)
 			s++;
 		i++;

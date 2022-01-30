@@ -6,48 +6,11 @@
 /*   By: nleyton <nleyton@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 05:06:04 by nleyton           #+#    #+#             */
-/*   Updated: 2022/01/29 21:13:06 by nleyton          ###   ########.fr       */
+/*   Updated: 2022/01/30 05:23:04 by nleyton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/checker.h"
-
-void	do_operations(t_stacks *ab)
-{
-	char *x;
-	
-	// x = NULL;
-	while (get_next_line(0, &x))
-	{
-		write(1, "|", 1);
-		write(1, x, ft_strlen(x));
-		write(1, "|\n", 2);
-		if (!strcmp21(x, "sa"))
-			sa(ab);
-		else if (!strcmp21(x, "sb"))
-			sb(ab);
-		else if (!strcmp21(x, "ss"))
-			ss(ab);
-		else if (!strcmp21(x, "pb"))
-			pb(ab);
-		else if (!strcmp21(x, "pa"))
-			pa(ab);
-		else if (!strcmp21(x, "ra"))
-			ra(ab);
-		else if (!strcmp21(x, "rb"))
-			rb(ab);
-		else if (!strcmp21(x, "rr"))
-			rr(ab);
-		else if (!strcmp21(x, "rra"))
-			rra(ab);
-		else if (!strcmp21(x, "rrb"))
-			rrb(ab);
-		else if (!strcmp21(x, "rrr"))
-			rrr(ab);
-		else
-			write(2, "Error\n", 6), exit(EXIT_FAILURE);
-	}
-}
 
 void	init_and_parse(t_stacks *ab, int argc, char **argv)
 {
@@ -67,16 +30,16 @@ void	init_and_parse(t_stacks *ab, int argc, char **argv)
 
 void	duplicate_checking(t_stacks *ab)
 {
-	int	x;
-	t_node *i;
-	t_node *j;
-	
+	int		x;
+	t_node	*i;
+	t_node	*j;
+
 	i = ab->a_head;
 	while (i->next)
 	{
 		x = i->value;
 		j = i;
-		while(j->next)
+		while (j->next)
 		{
 			j = j->next;
 			if (x == j->value)
@@ -102,7 +65,7 @@ void	indexation(t_stacks *ab)
 		while (i->index != -1)
 			i = i->next;
 		min = i;
-		while(i->next)
+		while (i->next)
 		{
 			i = i->next;
 			if (i->value < min->value && i->index == -1)
@@ -113,7 +76,7 @@ void	indexation(t_stacks *ab)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stacks	ab;
 

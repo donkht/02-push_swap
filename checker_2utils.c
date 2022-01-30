@@ -6,7 +6,7 @@
 /*   By: nleyton <nleyton@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 06:33:44 by nleyton           #+#    #+#             */
-/*   Updated: 2022/01/29 11:08:59 by nleyton          ###   ########.fr       */
+/*   Updated: 2022/01/30 04:51:40 by nleyton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	new_node(t_stacks *ab, int n)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
-	tmp = (t_node*)malloc(sizeof(t_node));
+	tmp = (t_node *)malloc(sizeof(t_node));
 	if (tmp == NULL)
 		exit (EXIT_FAILURE);
 	tmp->value = n;
@@ -33,15 +33,15 @@ void	new_node(t_stacks *ab, int n)
 		ab->a_tail->next = tmp;
 		tmp->prev = ab->a_tail;
 		tmp->next = NULL;
-		ab->a_tail = tmp;	
+		ab->a_tail = tmp;
 	}
 	ab->a_size++;
 }
 
 void	check_int(char *str)
 {
-	int i;
-	
+	int	i;
+
 	i = -1;
 	if (ft_strlen(str) < 1)
 	{
@@ -49,19 +49,23 @@ void	check_int(char *str)
 		exit(EXIT_FAILURE);
 	}
 	while (str[++i])
+	{
 		if ((str[i] < '0' || str[i] > '9') && str[i] != ' ')
+		{
 			if (!((str[i] == '-' || str[i] == '+') && ft_isdigit(str[i + 1])))
 			{
 				write(2, "Error\n", 6);
 				exit(EXIT_FAILURE);
 			}
+		}
+	}
 }
 
 void	parse1(t_stacks *ab, char *str)
 {
-	char **arr;
-	int i;
-	
+	char	**arr;
+	int		i;
+
 	i = -1;
 	arr = ft_split((char const *)str, ' ');
 	while (arr[++i])
@@ -78,7 +82,7 @@ void	parse1(t_stacks *ab, char *str)
 
 void	parse2(t_stacks *ab, int argc, char **argv)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (i < argc)
@@ -95,7 +99,7 @@ void	parse2(t_stacks *ab, int argc, char **argv)
 
 void	is_sorted(t_stacks *ab)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	tmp = ab->a_head;
 	if (ab->b_size != 0)

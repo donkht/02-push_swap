@@ -6,7 +6,7 @@
 /*   By: nleyton <nleyton@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:23:04 by nleyton           #+#    #+#             */
-/*   Updated: 2022/01/29 12:10:39 by nleyton          ###   ########.fr       */
+/*   Updated: 2022/01/29 22:38:09 by nleyton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ char	*trim_after_zero(char *s1)
 
 	copy_s1 = s1;
 	i = 0;
-	s2 = (void *)malloc(ft_strlen2((char *)s1) + 1);
+	s2 = (void *)malloc(ft_slen2((char *)s1) + 1);
 	if (s2 == NULL)
 		return (0);
-	while (i < ft_strlen2((char *)s1))
+	while (i < ft_slen2((char *)s1))
 	{
 		*(s2 + i) = *(char *)(s1 + i);
 		i++;
@@ -46,7 +46,7 @@ char	*trim_after_zero(char *s1)
 	return (s2);
 }
 
-int	ft_strlen2(char *s)
+int	ft_slen2(char *s)
 {
 	int	len;
 
@@ -56,9 +56,12 @@ int	ft_strlen2(char *s)
 	return (len);
 }
 
-int	strcmp21(const char* s1, const char* s2)
+int	strcmp21(const char *s1, const char *s2)
 {
-    while(*s1 && (*s1==*s2))
-        s1++,s2++;
-    return (*(const unsigned char*)s1-*(const unsigned char*)s2);
+	while (*s1 && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	return (*(const unsigned char *)s1 - *(const unsigned char *)s2);
 }

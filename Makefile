@@ -10,9 +10,10 @@ OBJ			=			$(SRC:.c=.o)
 
 NAME_BONUS	=			checker
 SRC_BONUS	=			checker.c \
+						checker_2utils.c \
+						checker_3finish.c \
 						checker_gnl.c \
 						checker_gnl_utils.c \
-						checker_utils.c \
 						checker_op1.c \
 						checker_op2.c \
 						checker_op3.c

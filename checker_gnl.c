@@ -6,7 +6,7 @@
 /*   By: nleyton <nleyton@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 09:51:04 by nleyton           #+#    #+#             */
-/*   Updated: 2022/01/29 11:07:11 by nleyton          ###   ########.fr       */
+/*   Updated: 2022/01/29 22:35:08 by nleyton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ int	add_buf_to_remainder(char **remainder, char *buf)
 		*remainder = buf;
 		return (21);
 	}
-	new_remainder = (char *)malloc (ft_strlen2(*remainder) + ft_strlen2(buf) + 1);
+	new_remainder = (char *)malloc(ft_slen2(*remainder) + ft_slen2(buf) + 1);
 	if (new_remainder == NULL)
 		return (0);
-	new_remainder[ft_strlen2(*remainder) + ft_strlen2(buf)] = '\0';
+	new_remainder[ft_slen2(*remainder) + ft_slen2(buf)] = '\0';
 	x = 0;
 	i = 0;
 	while (remainder[0][x] != '\0')

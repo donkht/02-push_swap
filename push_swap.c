@@ -6,7 +6,7 @@
 /*   By: nleyton <nleyton@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 05:06:04 by nleyton           #+#    #+#             */
-/*   Updated: 2022/01/29 19:47:33 by nleyton          ###   ########.fr       */
+/*   Updated: 2022/01/30 06:02:02 by nleyton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_and_parse(t_stacks *ab, int argc, char **argv)
 	ab->b_head = NULL;
 	ab->b_tail = NULL;
 	if (argc == 1)
-		exit(EXIT_FAILURE);
+		exit_error(ab, EXIT_FAILURE);
 	else if (argc == 2)
 		parse1(ab, argv[1]);
 	else if (argc > 2)
@@ -30,40 +30,40 @@ void	init_and_parse(t_stacks *ab, int argc, char **argv)
 
 void	duplicate_checking(t_stacks *ab)
 {
-	int	x;
-	t_node *i;
-	t_node *j;
-	
+	int		x;
+	t_node	*i;
+	t_node	*j;
+
 	i = ab->a_head;
 	while (i->next)
 	{
 		x = i->value;
 		j = i;
-		while(j->next)
+		while (j->next)
 		{
 			j = j->next;
 			if (x == j->value)
 			{
 				write(2, "Error\n", 6);
-				exit(EXIT_FAILURE);
+				exit_error(ab, EXIT_FAILURE);
 			}	
 		}
 		i = i->next;
 	}	
 }
 
-int		is_the_list_already_sorted(t_stacks *ab)
+void	is_the_list_already_sorted(t_stacks *ab)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	tmp = ab->a_head;
 	while (tmp->next)
 	{
 		if (tmp->value > tmp->next->value)
-			return (0);
+			return ;
 		tmp = tmp->next;
 	}
-	exit(EXIT_SUCCESS);
+	exit_error(ab, EXIT_SUCCESS);
 }
 
 void	indexation(t_stacks *ab)
@@ -79,7 +79,7 @@ void	indexation(t_stacks *ab)
 		while (i->index != -1)
 			i = i->next;
 		min = i;
-		while(i->next)
+		while (i->next)
 		{
 			i = i->next;
 			if (i->value < min->value && i->index == -1)
@@ -90,7 +90,7 @@ void	indexation(t_stacks *ab)
 	}
 }
 
-int main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stacks	ab;
 
@@ -98,6 +98,6 @@ int main (int argc, char **argv)
 	duplicate_checking(&ab);
 	is_the_list_already_sorted(&ab);
 	indexation(&ab);
-	sort(&ab); 
-	exit(EXIT_SUCCESS);
+	sort(&ab);
+	exit_error(&ab, EXIT_SUCCESS);
 }

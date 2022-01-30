@@ -6,7 +6,7 @@
 /*   By: nleyton <nleyton@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 06:04:36 by nleyton           #+#    #+#             */
-/*   Updated: 2022/01/29 10:01:58 by nleyton          ###   ########.fr       */
+/*   Updated: 2022/01/29 22:56:13 by nleyton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ra(t_stacks *ab)
 {
 	t_node	*tmp;
-	
+
 	if (ab->a_size > 1)
 	{
 		tmp = ab->a_head;
@@ -31,7 +31,7 @@ void	ra(t_stacks *ab)
 void	rb(t_stacks *ab)
 {
 	t_node	*tmp;
-	
+
 	if (ab->b_size > 1)
 	{
 		tmp = ab->b_head;
@@ -40,13 +40,14 @@ void	rb(t_stacks *ab)
 		ab->b_tail = tmp;
 		tmp->next->prev = NULL;
 		ab->b_head = tmp->next;
-		tmp->next = NULL;	
+		tmp->next = NULL;
 	}
 }
 
 void	rr(t_stacks *ab)
 {
 	t_node	*tmp;
+
 	if (ab->a_size > 1)
 	{
 		tmp = ab->a_head;
@@ -55,7 +56,7 @@ void	rr(t_stacks *ab)
 		ab->a_tail = tmp;
 		tmp->next->prev = NULL;
 		ab->a_head = tmp->next;
-		tmp->next = NULL;	
+		tmp->next = NULL;
 	}
 	if (ab->a_size > 1)
 	{
@@ -65,6 +66,6 @@ void	rr(t_stacks *ab)
 		ab->b_tail = tmp;
 		tmp->next->prev = NULL;
 		ab->b_head = tmp->next;
-		tmp->next = NULL;	
+		tmp->next = NULL;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nleyton <nleyton@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 06:27:51 by nleyton           #+#    #+#             */
-/*   Updated: 2022/01/29 20:30:43 by nleyton          ###   ########.fr       */
+/*   Updated: 2022/01/30 04:38:20 by nleyton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@ void	sort3(t_stacks *ab)
 void	sort4n5(t_stacks *ab)
 {
 	while (ab->a_size != 3)
+	{
 		if (ab->a_head->index < ab->a_size + ab->b_size - 3)
 			pb(ab);
 		else
 			ra(ab);
+	}
 	sort3(ab);
 	if (ab->b_size == 2)
 		if (ab->b_head->index < ab->b_tail->index)
@@ -56,7 +58,7 @@ void	sort4n5(t_stacks *ab)
 
 int	position(t_stacks *ab)
 {
-	int	i;
+	int		i;
 	t_node	*tmp;
 
 	i = 1;
@@ -69,11 +71,8 @@ int	position(t_stacks *ab)
 	return (i);
 }
 
-void	sort100500(t_stacks *ab, int k)
+void	sort100500(t_stacks *ab, int k, int i)
 {
-	int	i;
-
-	i = 0; 
 	while (ab->a_head != NULL)
 	{
 		if (ab->a_head->index <= i + k)
@@ -84,17 +83,19 @@ void	sort100500(t_stacks *ab, int k)
 			i++;
 		}
 		else
-			ra(ab);			
+			ra(ab);
 	}
 	while (ab->b_head != NULL)
 	{
 		if (ab->b_head->index == ab->b_size - 1)
 			pa(ab);
 		else
+		{
 			if (position(ab) <= ab->b_size / 2 + 1)
 				rb(ab);
 			else
 				rrb(ab);
+		}
 	}
 }
 
@@ -106,8 +107,8 @@ void	sort(t_stacks *ab)
 		sort3(ab);
 	else if (ab->a_size <= 5)
 		sort4n5(ab);
-	else if (ab->a_size <=222)
-		sort100500(ab, 15);
+	else if (ab->a_size <= 222)
+		sort100500(ab, 15, 0);
 	else
-		sort100500(ab, 30);
+		sort100500(ab, 30, 0);
 }
